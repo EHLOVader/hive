@@ -11,23 +11,16 @@
                     </div>
                 @endif
 
-                <form method="post" action="{{ url('entries/'.$instance->id) }}">
-                    {{ csrf_field() }}
 
-                    <input type="hidden" name="_method" value="PATCH">
+                    {!! Former::open()->route('entries.update', $instance->id) !!}
 
-                    <div class="form-group text-center">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="" name="name" value="{{ $instance->name }}">
-                    </div>
+                    {!! Former::input('name') !!}
 
-                    <div class="form-group text-center">
-                        <label for="content">Content</label>
-                        <input type="text" class="form-control" id="content" placeholder="" name="content" value="{{ $instance->content }}">
-                    </div>
+                    {!! Former::input('content') !!}
 
                     <button class="hive-btn"><i class="fa fa-check-circle"></i> Update entry</button>
-                </form>
+                    {!! Former::close() !!}
+
             </div>
         </div>
     </div>

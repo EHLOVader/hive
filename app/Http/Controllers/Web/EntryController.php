@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Lib\Repos\EntryRepo;
 use App\Lib\Data\EntryRequestMutator;
+use Former\Facades\Former;
 use Illuminate\Http\Request;
 use R\Hive\Contracts\Data\MessageInterface;
 use R\Hive\Contracts\Handlers\OnCreateInterface;
@@ -167,6 +168,7 @@ class EntryController extends Controller implements OnCreateInterface, OnUpdateI
     {
         $instance = $this->repo->find($id);
         if ($instance !== null) {
+            Former::populate($instance);
             return view('entries.edit', compact('instance'));
         }
 

@@ -11,21 +11,14 @@
                     </div>
                 @endif
 
-                <form method="post" action="{{ url('entries') }}">
-                    {{ csrf_field() }}
+                {!! Former::open()->route('entries.store') !!}
 
-                    <div class="form-group text-center">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="" name="name">
-                    </div>
+                    {!! Former::input('name') !!}
 
-                    <div class="form-group text-center">
-                        <label for="content">Content</label>
-                        <input type="text" class="form-control" id="content" placeholder="" name="content">
-                    </div>
+                    {!! Former::input('content') !!}
 
-                    <button class="hive-btn"><i class="fa fa-check-circle"></i> Create entry</button>
-                </form>
+                    <button type="submit" class="hive-btn"><i class="fa fa-check-circle"></i> Create entry</button>
+                {!! Former::close() !!}
             </div>
         </div>
     </div>
