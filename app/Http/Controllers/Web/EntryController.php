@@ -41,7 +41,7 @@ class EntryController extends Controller implements OnCreateInterface, OnUpdateI
      */
     public function createFailed(MessageInterface $message)
     {
-        return redirect()->back()->with('status', $message->getMessage());
+        return redirect()->back()->withInput()->withErrors($message->getValidator()->getErrors())->with('status', $message->getMessage());
     }
 
     /**
@@ -65,7 +65,10 @@ class EntryController extends Controller implements OnCreateInterface, OnUpdateI
      */
     public function updateFailed(MessageInterface $message)
     {
-        return redirect()->back()->with('status', $message->getMessage());
+        return redirect()->back()
+        ->withInput()
+        ->withErrors($message->getValidator()->getErrors())
+        ->with('status', $message->getMessage());
     }
 
     /**
