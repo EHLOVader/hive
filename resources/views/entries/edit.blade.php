@@ -14,9 +14,7 @@
 
                     {!! Former::open()->route('entries.update', $instance->id) !!}
 
-                    {!! Former::input('name') !!}
-
-                    {!! Former::input('content') !!}
+                    @include('entries._form')
 
                     <button class="hive-btn"><i class="fa fa-check-circle"></i> Update entry</button>
                     {!! Former::close() !!}

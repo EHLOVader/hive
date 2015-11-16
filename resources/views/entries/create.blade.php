@@ -13,9 +13,7 @@
 
                 {!! Former::open()->route('entries.store') !!}
 
-                    {!! Former::input('name') !!}
-
-                    {!! Former::input('content') !!}
+                    @include('entries._form')
 
                     <button type="submit" class="hive-btn"><i class="fa fa-check-circle"></i> Create entry</button>
                 {!! Former::close() !!}
