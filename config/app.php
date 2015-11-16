@@ -146,6 +146,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         R\Hive\Providers\HiveServiceProvider::class,
 
+        Former\FormerServiceProvider::class,
     ],
 
     /*
@@ -194,7 +195,7 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-
+        'Former'    => Former\Facades\Former::class,
     ],
 
 ];
