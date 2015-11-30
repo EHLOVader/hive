@@ -39,9 +39,10 @@ class MakeInstanceCommand extends GeneratorCommand
         if (parent::fire() !== false) {
             if ($this->option('migration')) {
                 $table = Str::plural(Str::snake(class_basename($this->argument('name'))));
-                $fields = $this->argument('fields');
+                $fields = $this->option('fields');
 
-                $this->call('hive:migration', ['name' => "create_{$table}_table", '--create' => $table, '--fields', $fields]);
+
+                $this->call('hive:migration', ['name' => $table, '--fields' => $fields]);
             }
         }
     }
@@ -82,6 +83,7 @@ class MakeInstanceCommand extends GeneratorCommand
         return [
             ['eloquent', 'e', InputOption::VALUE_NONE, 'Extend the eloquent model class.'],
             ['migration', 'm', InputOption::VALUE_NONE, 'Create a new migration file for the model.'],
+            ['fields', 'f', InputOption::VALUE_REQUIRED, 'Create a new migration file for the model.'],
         ];
     }
 }

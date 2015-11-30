@@ -4,6 +4,7 @@ namespace R\Hive\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class AssembleCommand extends Command
 {
@@ -26,6 +27,13 @@ class AssembleCommand extends Command
     {
         return [
             ['name', InputArgument::REQUIRED, 'The name of the instance.'],
+        ];
+    }
+
+    protected function getOptions()
+    {
+        return [
+            ['fields', 'f', InputOption::VALUE_REQUIRED, 'The fields to be used in this schema.'],
         ];
     }
 }

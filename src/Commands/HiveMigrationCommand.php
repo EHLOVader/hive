@@ -3,6 +3,8 @@
 namespace R\Hive\Commands;
 
 use Illuminate\Support\Str;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class HiveMigrationCommand extends HiveGeneratorCommand
 {
@@ -74,7 +76,7 @@ class HiveMigrationCommand extends HiveGeneratorCommand
     protected function getOptions()
     {
         return [
-            //
+            ['fields', 'f', InputOption::VALUE_NONE, 'Fields to use in the migration schema.'],
         ];
     }
 }
