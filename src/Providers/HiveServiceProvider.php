@@ -4,6 +4,7 @@ namespace R\Hive\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use R\Hive\Commands\AssembleCommand;
+use R\Hive\Commands\HiveMigrationCommand;
 use R\Hive\Commands\MakeCommandCommand;
 use R\Hive\Commands\MakeControllerCommand;
 use R\Hive\Commands\MakeFactoryCommand;
@@ -27,6 +28,7 @@ class HiveServiceProvider extends ServiceProvider
         'MakeCommand'    => 'command.make.command',
         'MakeHandler'    => 'command.make.handler',
         'MakeMutator'    => 'command.make.mutator',
+        'MakeMigration'  => 'command.make.migration',
     ];
 
     public function register()
@@ -100,6 +102,13 @@ class HiveServiceProvider extends ServiceProvider
     {
         $this->app->singleton('command.make.mutator', function ($app) {
             return new MakeMutatorCommand($app['files']);
+        });
+    }
+
+    protected function registerMakeMigrationCommand()
+    {
+        $this->app->singleton('command.make.migration', function ($app) {
+            return new HiveMigrationCommand($app['files']);
         });
     }
 
