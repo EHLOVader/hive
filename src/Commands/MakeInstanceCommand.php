@@ -39,8 +39,9 @@ class MakeInstanceCommand extends GeneratorCommand
         if (parent::fire() !== false) {
             if ($this->option('migration')) {
                 $table = Str::plural(Str::snake(class_basename($this->argument('name'))));
+                $fields = $this->argument('fields');
 
-                $this->call('make:migration', ['name' => "create_{$table}_table", '--create' => $table]);
+                $this->call('hive:migration', ['name' => "create_{$table}_table", '--create' => $table, '--fields', $fields]);
             }
         }
     }
